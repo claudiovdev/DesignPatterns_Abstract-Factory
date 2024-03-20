@@ -4,23 +4,23 @@ import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
 
+import com.algaworks.pagamento.pagseguro.PagSeguroModuloPagamentoFactory;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.algaworks.gestorderisco.AlertaDeRiscoException;
-import com.algaworks.gestorderisco.FControl;
+import com.algaworks.gestorderisco.fControl.FControl;
 import com.algaworks.operadora.CapturaNaoAutorizadaException;
-import com.algaworks.operadora.Cielo;
+import com.algaworks.operadora.cielo.Cielo;
 
 public class PagamentoViaPagSeguroTest {
 
-	private PagamentoPagSeguro pagamento;
+	private Pagamento pagamento;
 	
 	@Before
 	public void init() {
-		Cielo cielo = new Cielo();
-		FControl fcontrol = new FControl();
-		pagamento = new PagamentoPagSeguro(cielo, fcontrol);
+		ModuloPagamentoFactory moduloPagamentoFactory = new PagSeguroModuloPagamentoFactory();
+		pagamento = new Pagamento(moduloPagamentoFactory);
 	}
 	
 	@Test
