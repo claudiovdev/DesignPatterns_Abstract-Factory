@@ -4,10 +4,7 @@ import org.desafio.nfs.saoPaulo.SaoPauloNfs;
 
 import org.desafio.boleto.Boleta;
 import org.desafio.nfs.NFe;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class VendaTest {
     private Venda venda;
@@ -17,9 +14,8 @@ class VendaTest {
 
     @Test
     void deveMostrarPrint(){
-        nFe = new SaoPauloNfs();
-        boleta = new BolentoBB();
-        venda = new Venda(nFe, boleta);
+       ModuloVendaFactory moduloVendaFactory = new BancoBBModuloVendaFactory();
+        venda = new Venda(moduloVendaFactory);
 
         venda.realizar();
     }
